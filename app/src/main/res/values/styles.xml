@@ -8,4 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="PomoTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="android:statusBarColor">@color/primaryDarkColor</item>
+        <item name="android:colorBackground">@android:color/background_light</item>
+        <item name="android:windowBackground">@color/primaryLightColor</item>
+    </style>
+
+    <style name="RestTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/restColor</item>
+        <item name="colorPrimaryDark">@color/restDarkColor</item>
+        <item name="colorAccent">@color/restColor</item>
+        <item name="android:statusBarColor">@color/restDarkColor</item>
+        <item name="android:colorBackground">@android:color/background_light</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:windowBackground">@color/restLightColor</item>
+    </style>
+
 </resources>
