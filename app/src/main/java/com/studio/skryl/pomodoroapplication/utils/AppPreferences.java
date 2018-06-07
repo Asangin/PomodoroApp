@@ -1,4 +1,4 @@
-package com.studio.skryl.pomodoroapplication;
+package com.studio.skryl.pomodoroapplication.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -37,11 +37,27 @@ public class AppPreferences {
 
     final static String STAGE_POMODORO_ACTIVITY = "status_activity";
 
+    public String getPomoTime() {
+        int time = 60000;
+        return TimeConverter.fHourMinute(time);
+    }
+
+    public String getRestTime() {
+        int time = 10000;
+        return TimeConverter.fHourMinute(time);
+    }
+
+    public String getLongRestTime() {
+        int time = 15000;
+        return TimeConverter.fHourMinute(time);
+    }
+
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({POMO_ACT, REST_ACT})
+    @IntDef({POMO_ACT, REST_ACT, LONG_REST_ACT})
     public @interface StagesActivity {
     }
 
+    public static final int LONG_REST_ACT = -1;
     public static final int REST_ACT = 0;
     public static final int POMO_ACT = 1;
 

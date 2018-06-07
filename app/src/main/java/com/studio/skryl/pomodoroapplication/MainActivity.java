@@ -1,10 +1,9 @@
 package com.studio.skryl.pomodoroapplication;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+
+import com.studio.skryl.pomodoroapplication.utils.AppPreferences;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,10 +33,5 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_main);
                 break;
         }
-
-
-
-
-
     }
 }
