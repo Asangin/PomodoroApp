@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.studio.skryl.pomodoroapplication.SettingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="16dp">
+
+        <TextView
+            style="@style/text"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content"
+            android:text="Volume" />
+        <SeekBar
+            android:id="@+id/volume_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:progress="0"
+            android:max="100"/>
+        <Switch
+            style="@style/text"
+            android:id="@+id/vibrate_set"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vibrate" />
+        <TextView
+            style="@style/text"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Pomodoro duration" />
+        <Spinner
+            android:id="@+id/pomodoro_time_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            style="@style/text"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Rest duration" />
+        <Spinner
+            android:id="@+id/rest_time_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            style="@style/text"
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Long rest duration" />
+        <Spinner
+            android:id="@+id/long_rest_time_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

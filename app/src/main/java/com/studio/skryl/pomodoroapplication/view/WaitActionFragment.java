@@ -1,4 +1,4 @@
-package com.studio.skryl.pomodoroapplication;
+package com.studio.skryl.pomodoroapplication.view;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.studio.skryl.pomodoroapplication.R;
 import com.studio.skryl.pomodoroapplication.utils.AppPreferences;
 
 public class WaitActionFragment extends Fragment {

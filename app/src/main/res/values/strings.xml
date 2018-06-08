@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Pomodoro Application</string>
     <string name="default_timer_set">00:00</string>
+
+    <string-array name="pomodoro_minutes">
+        <item>test (5 sec)</item>
+        <item>15 minutes</item>
+        <item>20 minutes</item>
+        <item>25 minutes</item>
+        <item>30 minutes</item>
+    </string-array>
+    <string-array name="rest_minutes">
+        <item>test (5 sec)</item>
+        <item>5 minutes</item>
+        <item>10 minutes</item>
+    </string-array>
+    <string-array name="long_rest_minutes">
+        <item>test (5 sec)</item>
+        <item>10 minutes</item>
+        <item>15 minutes</item>
+    </string-array>
+    <string name="title_activity_settings">Settings</string>
+    <string name="txt_stop_pomodoro">Stop Pomodoro</string>
+    <string name="txt_start_pomodoro">Start Pomodoro</string>
+    <string name="txt_stop_rest">Stop Rest</string>
 </resources>

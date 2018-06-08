@@ -1,4 +1,4 @@
-package com.studio.skryl.pomodoroapplication;
+package com.studio.skryl.pomodoroapplication.view;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.studio.skryl.pomodoroapplication.R;
 import com.studio.skryl.pomodoroapplication.utils.Constants;
 
 public class ProcessFragment extends Fragment {
