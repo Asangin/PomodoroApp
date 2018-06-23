@@ -9,6 +9,21 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public class AppPreferences {
+
+    public AppPreferences(Context context) {
+        this.pref = context.getSharedPreferences(SHARED_PREFS_FILE, Context.MODE_PRIVATE);
+    }
+    /**
+     * Singleton
+     */
+    private static AppPreferences _instance = null;
+
+    public synchronized static AppPreferences getInstance(Context context) {
+        if (_instance == null)
+            _instance = new AppPreferences(context);
+        return _instance;
+    }
+
     final static String SHARED_PREFS_FILE = "pomodoro_preferences";
     private static final String VIBRATION_SET = "vibration_set";
     private static final String POMODORO_TIME_SET = "pomodoro_time_set";
@@ -22,10 +37,6 @@ public class AppPreferences {
 
     private SharedPreferences.Editor getEdit() {
         return pref.edit();
-    }
-
-    public AppPreferences(Context context) {
-        this.pref = context.getSharedPreferences(SHARED_PREFS_FILE, Context.MODE_PRIVATE);
     }
 
     public Boolean getVibrateOption() { return pref.getBoolean(VIBRATION_SET, false); }
@@ -113,14 +124,5 @@ public class AppPreferences {
                 .apply();
     }
 
-    /**
-     * Singleton
-     */
-    private static AppPreferences _instance = null;
 
-    public synchronized static AppPreferences getInstance(Context context) {
-        if (_instance == null)
-            _instance = new AppPreferences(context);
-        return _instance;
-    }
 }

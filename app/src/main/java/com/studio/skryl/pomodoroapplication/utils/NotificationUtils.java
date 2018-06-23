@@ -80,6 +80,6 @@ public class NotificationUtils {
                 .setContentIntent(notificationPendingIntent);
 
         manager.notify(lastId, processNotificationBuilder.build()); // отображаем его пользователю.
-        return lastId++; //TODO maybe delete autoincrement?
+        return lastId++;
     }
 }

@@ -72,24 +72,10 @@ public class ButtonsFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         Log.d(Constants.TAG, "ButtonFragment. onClick. ");
         if (!servicesUtility.checkService()) {
-            switch (preferences.getStageAct()) {
-                case AppPreferences.POMO_ACT:
-                    getActivity()
-                            .startService(new Intent(getContext(), TimerService.class)
-                                    .putExtra(Constants.TIMER_BACKGROUND_VALUE, preferences.getPomoTime()));
-                    break;
-                case AppPreferences.REST_ACT:
-                    getActivity()
-                            .startService(new Intent(getContext(), TimerService.class)
-                                    .putExtra(Constants.TIMER_BACKGROUND_VALUE, preferences.getRestTime()));
-                    break;
-                case AppPreferences.LONG_REST_ACT:
-                    getActivity()
-                            .startService(new Intent(getContext(), TimerService.class)
-                                    .putExtra(Constants.TIMER_BACKGROUND_VALUE, preferences.getLongRestTime()));
-                    break;
-            }
-
+            getActivity()
+                    .startService(new Intent(getContext(), TimerService.class)
+                            .putExtra(Constants.TIMER_BACKGROUND_VALUE, preferences.getPomoTime())
+                            .putExtra(Constants.STAGE_VALUE, preferences.POMO_ACT));
         } else {
             getActivity().stopService(new Intent(getContext(), TimerService.class));
             onButtonsFragmentListener.refreshTime();

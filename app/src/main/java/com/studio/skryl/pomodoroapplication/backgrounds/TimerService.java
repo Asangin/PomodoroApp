@@ -22,6 +22,7 @@ public class TimerService extends Service {
     private int timeValue;
     private CountDownTimer countDownTimer;
     private NotificationCompat.Builder builderPomoProcess; //TODO field or local? what about another notif
+    private int stageValue;
 
     public TimerService() {
     }
@@ -36,6 +37,7 @@ public class TimerService extends Service {
     public void onCreate() {
         Log.d(Constants.TAG, "TimerService. onCreate. ");
         super.onCreate();
+        intent = new Intent(Constants.BROADCAST_ACTION_TIMER);
         preferences = AppPreferences.getInstance(this);
         notificationUtils = NotificationUtils.getInstance(this);
     }
@@ -44,8 +46,9 @@ public class TimerService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(Constants.TAG, "TimerService. onStartCommand. ");
         timeValue = intent.getIntExtra(Constants.TIMER_BACKGROUND_VALUE, 0);
-
-        pomoProcessId = notificationUtils.createProcessNotification("Pomodoro start!", "Focus on your work");
+        stageValue = intent.getIntExtra(Constants.STAGE_VALUE, 1);
+        if (stageValue == AppPreferences.POMO_ACT) pomoProcessId = notificationUtils.createProcessNotification("Pomodoro start!", "Focus on your work");
+        else pomoProcessId = notificationUtils.createProcessNotification("Time to rest!", "Make some tea or walk outside!");
 
         // TODO implement RestProcess notif, finish pomo notif and finish rest notif
         startTimer(timeValue, pomoProcessId);
@@ -65,10 +68,26 @@ public class TimerService extends Service {
             @Override
             public void onFinish() {
                 Log.d(Constants.TAG, "TimerService. startTimer. onFinish. ");
-                notificationUtils.createPomodoroFinishNotification("Time to Rest", "Relax and make cup of tea!");
+                onNextStage(stageValue);
                 stopSelf();
             }
         }.start();
+    }
+
+    private void onNextStage(int stage) {
+        int notifId;
+        switch (stage) {
+            case AppPreferences.POMO_ACT:
+                notifId = notificationUtils.createPomodoroFinishNotification("Time to rest!", "Relax and make cup of tea.");
+                intent.putExtra(Constants.BROADCAST_DIALOG, Constants.REST_DIALOG).putExtra(Constants.NOTIFICATION_ID, notifId);
+                sendBroadcast(intent);
+                break;
+            case AppPreferences.REST_ACT:
+                notifId = notificationUtils.createPomodoroFinishNotification("Back to work!", "That it for rest, time to back for the work.");
+                intent.putExtra(Constants.BROADCAST_DIALOG, Constants.WORK_DIALOG).putExtra(Constants.NOTIFICATION_ID, notifId);
+                sendBroadcast(intent);
+                break;
+        }
     }
 
     @Override
@@ -84,7 +103,6 @@ public class TimerService extends Service {
         String timeLeft = TimeConverter.fHourMinute(millisUntilFinished);
         notificationUtils.updateProcessNotification(pomoProcessId, millisUntilFinished);
 
-        intent = new Intent(Constants.BROADCAST_ACTION_TIMER);
         intent.putExtra("TIC_TAC", timeLeft);
         sendBroadcast(intent);
     }

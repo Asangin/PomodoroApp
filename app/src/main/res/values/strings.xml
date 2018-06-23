@@ -24,4 +24,7 @@
     <string name="txt_start_pomodoro">Start Pomodoro</string>
     <string name="txt_stop_rest">Stop Rest</string>
     <string name="settings">Settings</string>
+    <string name="begin_long_rest">begin long rest</string>
+    <string name="rest_dialog_txt">Time to rest! Or you may continue the work by skipping the rest</string>
+    <string name="skip_rest">skip rest</string>
 </resources>
