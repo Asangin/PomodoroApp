@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements ButtonsFragment.B
                 if (str != null) {
                     dialogWorkRest(str);
                     notifID = intent.getIntExtra(Constants.NOTIFICATION_ID, 0);
+                    // TODO падает при закрытом активити, надо придумать переменную в преференсах, а на бродкасте сделать ребилд
                 }
             }
         };

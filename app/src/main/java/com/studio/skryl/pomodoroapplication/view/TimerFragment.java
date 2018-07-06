@@ -48,7 +48,7 @@ public class TimerFragment extends Fragment {
         Log.d(Constants.TAG, "TimerFragment. onCreateView. ");
         View v = inflater.inflate(R.layout.timer_fragment, null);
         timerView = v.findViewById(R.id.timer_view);
-        preferences = AppPreferences.getInstance(getActivity());
+        preferences = AppPreferences.getInstance(getContext());
         servicesUtility = ServicesUtility.getInstance(getActivity());
 
         if (!servicesUtility.checkService()) timeSetup();

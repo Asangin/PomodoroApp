@@ -1,5 +1,6 @@
 package com.studio.skryl.pomodoroapplication.utils;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.IntDef;
@@ -10,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class AppPreferences {
 
-    public AppPreferences(Context context) {
+    private AppPreferences(Context context) {
         this.pref = context.getSharedPreferences(SHARED_PREFS_FILE, Context.MODE_PRIVATE);
     }
     /**

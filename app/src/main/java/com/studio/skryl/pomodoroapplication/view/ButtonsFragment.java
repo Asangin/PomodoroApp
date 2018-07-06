@@ -45,7 +45,7 @@ public class ButtonsFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(Constants.TAG, "ButtonFragment. onCreateView. ");
-        preferences = AppPreferences.getInstance(getActivity());
+        preferences = AppPreferences.getInstance(getContext());
         servicesUtility = ServicesUtility.getInstance(getActivity());
         View v = inflater.inflate(R.layout.button_fragment, null);
         btn = (Button) v.findViewById(R.id.action_button);

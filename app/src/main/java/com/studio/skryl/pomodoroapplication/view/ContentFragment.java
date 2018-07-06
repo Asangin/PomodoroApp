@@ -20,7 +20,7 @@ public class ContentFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        preferences = AppPreferences.getInstance(getActivity());
+        preferences = AppPreferences.getInstance(getContext());
         LinearLayout layout = new LinearLayout(getActivity());
         View view;
 
