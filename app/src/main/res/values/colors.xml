@@ -13,4 +13,5 @@
     <color name="primaryDarkColor">#ba000d</color>
 
     <color name="primaryTextColor">#000000</color>
+    <color name="primaryWindowsBackground">#ffebee</color>
 </resources>

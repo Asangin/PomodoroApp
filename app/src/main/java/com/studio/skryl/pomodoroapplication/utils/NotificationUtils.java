@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -18,7 +19,9 @@ public class NotificationUtils {
 
     private static Context context;
     private NotificationManager manager; // Системная утилита, упарляющая уведомлениями
-    private int lastId = 0; //постоянно увеличивающееся поле, уникальный номер каждого уведомления
+    //private int lastId = 0; //постоянно увеличивающееся поле, уникальный номер каждого уведомления
+    private final static int TIME_NOTIF_ID = 1;
+    private final static int FINISH_NOTIF_ID = 2;
     private HashMap<Integer, Notification> notifications; //массив ключ-значение на все отображаемые пользователю уведомления
     private NotificationCompat.Builder processNotificationBuilder;
 
@@ -52,8 +55,8 @@ public class NotificationUtils {
                 .setContentText(messageContext) // Основной текст уведомления
                 .setContentIntent(notificationPendingIntent);
 
-        manager.notify(lastId, processNotificationBuilder.build()); // отображаем его пользователю.
-        return lastId++; //TODO maybe delete autoincrement?
+        manager.notify(TIME_NOTIF_ID, processNotificationBuilder.build()); // отображаем его пользователю.
+        return TIME_NOTIF_ID; //TODO maybe delete autoincrement?
     }
 
     public void updateProcessNotification(int notificationId, long millisUntilFinished) {
@@ -67,10 +70,11 @@ public class NotificationUtils {
         manager.cancel(notificationId);
     }
 
-    public int createPomodoroFinishNotification(String messageTitle, String messageContext){
+    public int createPomodoroFinishNotification(String messageTitle, String messageContext, int stage){
         Log.d(Constants.TAG, "NotificationUtils. createPomodoroFinishNotification.");
         Intent notificationIntent = new Intent(context, MainActivity.class); // TODO impl Dialog massage about Rest, skiprest and so on...
-        PendingIntent notificationPendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notificationIntent.putExtra("NOTIF_ACTION", stage);
+        PendingIntent notificationPendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         processNotificationBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_pomo_finish) //иконка уведомления
@@ -79,7 +83,7 @@ public class NotificationUtils {
                 .setContentText(messageContext) // Основной текст уведомления
                 .setContentIntent(notificationPendingIntent);
 
-        manager.notify(lastId, processNotificationBuilder.build()); // отображаем его пользователю.
-        return lastId++;
+        manager.notify(FINISH_NOTIF_ID, processNotificationBuilder.build()); // отображаем его пользователю.
+        return FINISH_NOTIF_ID;
     }
 }

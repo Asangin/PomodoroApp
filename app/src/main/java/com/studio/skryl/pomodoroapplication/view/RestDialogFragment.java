@@ -1,6 +1,7 @@
 package com.studio.skryl.pomodoroapplication.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -46,6 +47,12 @@ public class RestDialogFragment extends DialogFragment implements View.OnClickLi
         restBtn.setOnClickListener(this);
 
         return root;
+    }
+
+    @Override
+    public void onCancel(DialogInterface dialog) {
+        super.onCancel(dialog);
+        listener.workEvent();
     }
 
     @Override

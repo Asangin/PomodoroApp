@@ -27,4 +27,5 @@
     <string name="begin_long_rest">begin long rest</string>
     <string name="rest_dialog_txt">Time to rest! Or you may continue the work by skipping the rest</string>
     <string name="skip_rest">skip rest</string>
+    <string name="rest_dialod">rest</string>
 </resources>

@@ -14,6 +14,8 @@ import android.widget.Button;
 import com.studio.skryl.pomodoroapplication.R;
 import com.studio.skryl.pomodoroapplication.utils.Constants;
 
+
+@Deprecated
 public class WorkDialogFragment extends DialogFragment {
 
     DialogEventListener listener;

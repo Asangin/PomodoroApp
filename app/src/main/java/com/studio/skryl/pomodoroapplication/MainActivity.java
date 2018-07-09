@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements ButtonsFragment.B
     AppPreferences preferences;
     NotificationUtils notificationUtils;
     private int notifID;
+    private int notifAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,11 @@ public class MainActivity extends AppCompatActivity implements ButtonsFragment.B
 
         notificationUtils = NotificationUtils.getInstance(this);
 
+        Intent intent = getIntent();
+        notifAction = intent.getIntExtra("NOTIF_ACTION", 2);
+
         attachFragmentToActivity();
+
         setStageTheme(preferences.getStageAct());
     }
 
@@ -97,6 +102,10 @@ public class MainActivity extends AppCompatActivity implements ButtonsFragment.B
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (notifAction == AppPreferences.POMO_ACT) dialogWorkRest(Constants.WORK_DIALOG);
+        else if (notifAction == AppPreferences.REST_ACT) dialogWorkRest(Constants.REST_DIALOG);
+
         BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -117,8 +126,9 @@ public class MainActivity extends AppCompatActivity implements ButtonsFragment.B
         DialogFragment dg;
         switch (dialog) {
             case Constants.WORK_DIALOG:
-                dg = new WorkDialogFragment();
-                dg.show(getSupportFragmentManager(), Constants.WORK_DIALOG);
+                  workEvent();
+//                dg = new WorkDialogFragment();
+//                dg.show(getSupportFragmentManager(), Constants.WORK_DIALOG);
                 break;
             case Constants.REST_DIALOG:
                 dg = new RestDialogFragment();

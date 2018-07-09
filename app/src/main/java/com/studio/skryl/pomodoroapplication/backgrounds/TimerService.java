@@ -78,12 +78,12 @@ public class TimerService extends Service {
         int notifId;
         switch (stage) {
             case AppPreferences.POMO_ACT:
-                notifId = notificationUtils.createPomodoroFinishNotification("Time to rest!", "Relax and make cup of tea.");
+                notifId = notificationUtils.createPomodoroFinishNotification("Time to rest!", "Relax and make cup of tea.", stage);
                 intent.putExtra(Constants.BROADCAST_DIALOG, Constants.REST_DIALOG).putExtra(Constants.NOTIFICATION_ID, notifId);
                 sendBroadcast(intent);
                 break;
             case AppPreferences.REST_ACT:
-                notifId = notificationUtils.createPomodoroFinishNotification("Back to work!", "That it for rest, time to back for the work.");
+                notifId = notificationUtils.createPomodoroFinishNotification("Back to work!", "That it for rest, time to back for the work.", stage);
                 intent.putExtra(Constants.BROADCAST_DIALOG, Constants.WORK_DIALOG).putExtra(Constants.NOTIFICATION_ID, notifId);
                 sendBroadcast(intent);
                 break;
